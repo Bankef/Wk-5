@@ -149,7 +149,7 @@
     }
     // TODO Validate the zipcode is in the range 55001 and 56763.
     // to check that the zip code is in Minnesota.
-    else if (zipnumber < 55001 || zipnumber > 56763){
+    else if (zipnumber < 55001 || zipnumber > 56763 || isNaN(zipnumber))    {
       zipCodeInput.setAttribute('class', 'error')
         errors.push('* Zip code must be between 55001 and 56763')
     }

@@ -18,18 +18,15 @@ let iss_location = {
 }
 
 // TODO Extract the latitude value, and log it to the console.
-//let positionLat = iss_position.latitude
-//console.log(positionLat)
+console.log(iss_location.iss_position.latitude)
 
 // TODO Extract the longitude value, and log it to the console.
-//let positionLong = iss_position.longtitude
-
+console.log(iss_location.iss_position.longitude)
 
 /* b. Use this JavaScript object of exchange rates relative to Euros.
 The properties are currency symbols, the values are the exchange rates.
 Data source: http://fixer.io/
 * */
-
 
 let rates = {
     "AUD": 1.5417,
@@ -44,12 +41,14 @@ console.log(rates)
 
 // TODO if you had 100 Euros, write code to get the exchange rate from the object, then calculate
 //the equivalent value in Australian Dollars (AUD)
+let audExchange = rates.AUD * 100
+let audExchangeD = audExchange.toFixed(4)
+console.log(audExchangeD)
 
 // TODO write code to identify the currency symbol that has the highest exchange rate compared to Euros.
 //    In other words, identify the property with the largest value. the answer is BRL (Brazilian Real) at 3.8959 BRL to 1 Euro.
-
-
-
+let maxValue =Math.max(rates)
+console.log(maxValue)
 
 /* c. Use this JavaScript array of objects of cat owners, and their cats. Source, moderncat.com
  */
@@ -62,23 +61,28 @@ let cats_and_owners = [
 ]
 
 // TODO print Gary Oldman's cat's name
+//for (let i=0, i< cats_and_owners[i].name){
+    //if (cats_and_owners[i].name ===)
+    //let GaryCat
+}
+//console.log(GaryCat)
 // TODO Taylor Swift's cat is called 'Meredith'. Write code to add this data to the array.
+//const cats_and_owners =['name: "Taylor Swift", cat: "Meredith"']
+//cats_and_owners.unshift('name: "Taylor Swift", cat: "Meredith"')
+//console.log(cats_and_owners)
+
 // TODO write a loop to print each cat owner, and their cat's name, one per line. Use the forEach style.
 //   Each line should have a message like "Snoop Dogg's cat is called Miles Davis"
-
-
+let catsOwnerLength = []
+catsOwnerLength.forEach( function (catsName){
+    let length = catsName.length
+    catsOwnerLength.push(length)
+})
+console.log(catsOwnerLength)
 
 /* d. Use the following JSON object, describing the Nobel Prize winners in 2017.
 Source http://api.nobelprize.org/v1/prize.json?year=2017
 * */
-
-// TODO print the full name of the Literature Nobel laureate.
-// TODO print the ids of each of the Physics Nobel laureates. Your code should still work without modification if a laureate was added, or removed.
-// TODO write code to print the names of all of the prize categories (So your output would start physics, chemistry, medicine... ).
-// TODO write code to print the total number of prize categories
-// TODO write code to count the total number of laureates from 2017.
-//   have a good look at how the JSON is structured, and think about what loop(s) you'll need to write.
-
 
 let nobel_prize_winners_2017 = {
     "prizes":[
@@ -204,3 +208,45 @@ let nobel_prize_winners_2017 = {
         }
     ]
 }
+
+// TODO print the full name of the Literature Nobel laureate.
+for (let i=0; i< nobel_prize_winners_2017.prizes.length; i++ ) {
+    if (nobel_prize_winners_2017.prizes[i].category === "literature") {
+        let laureatesList = nobel_prize_winners_2017.prizes[i].laureates;
+        let laureatesLength = laureatesList.length;
+        let j = 0;
+        while (j < laureatesLength) {
+            console.log(laureatesList[j].firstname + " " + laureatesList[j].surname);
+            j++;
+        }
+    }
+}
+
+// TODO print the ids of each of the Physics Nobel laureates. Your code should still work without modification if a laureate was added, or removed.
+for (let i=0; i< nobel_prize_winners_2017.prizes.length; i++ ) {
+    if (nobel_prize_winners_2017.prizes[i].category === "physics") {
+        let laureatesList = nobel_prize_winners_2017.prizes[i].laureates;
+        let laureatesLength = laureatesList.length;
+        let j = 0;
+        while (j < laureatesLength) {
+            console.log(laureatesList[j].id);
+            j++;
+        }
+    }
+}
+
+// TODO write code to print the names of all of the prize categories (So your output would start physics, chemistry, medicine... ).
+for (let i=0; i< nobel_prize_winners_2017.prizes.length; i++ ) {
+console.log(nobel_prize_winners_2017.prizes[i].category);
+}
+// TODO write code to print the total number of prize categories
+console.log(nobel_prize_winners_2017.prizes.length);
+
+// TODO write code to count the total number of laureates from 2017.
+//   have a good look at how the JSON is structured, and think about what loop(s) you'll need to write.
+let laureateTotal = 0;
+for (let i=0; i< nobel_prize_winners_2017.prizes.length; i++ ) {
+    laureateTotal += nobel_prize_winners_2017.prizes[i].laureates.length;
+}
+console.log(laureateTotal);
+

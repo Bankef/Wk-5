@@ -18,10 +18,10 @@ let iss_location = {
 }
 
 // TODO Extract the latitude value, and log it to the console.
-console.log(iss_location.iss_position.latitude)
+console.log('This is the ISS Latitude value ' + iss_location.iss_position.latitude)
 
 // TODO Extract the longitude value, and log it to the console.
-console.log(iss_location.iss_position.longitude)
+console.log('The longitude value is ' + iss_location.iss_position.longitude)
 
 /* b. Use this JavaScript object of exchange rates relative to Euros.
 The properties are currency symbols, the values are the exchange rates.
@@ -47,8 +47,10 @@ console.log(audExchangeD)
 
 // TODO write code to identify the currency symbol that has the highest exchange rate compared to Euros.
 //    In other words, identify the property with the largest value. the answer is BRL (Brazilian Real) at 3.8959 BRL to 1 Euro.
-let maxValue =Math.max(rates)
-console.log(maxValue)
+//let maxValue =Math.max(rates)
+//console.log(maxValue)
+let getObjectKey = (obj, value) => Object.keys(obj).find(key => obj[key] === value)
+console.log('This is the currency with the highest value: ' +  getObjectKey)
 
 /* c. Use this JavaScript array of objects of cat owners, and their cats. Source, moderncat.com
  */
@@ -61,24 +63,17 @@ let cats_and_owners = [
 ]
 
 // TODO print Gary Oldman's cat's name
-//for (let i=0, i< cats_and_owners[i].name){
-    //if (cats_and_owners[i].name ===)
-    //let GaryCat
-}
-//console.log(GaryCat)
+console.log('Gary Oldman\'s cat name is:', cats_and_owners[1].cat);
+
 // TODO Taylor Swift's cat is called 'Meredith'. Write code to add this data to the array.
-//const cats_and_owners =['name: "Taylor Swift", cat: "Meredith"']
-//cats_and_owners.unshift('name: "Taylor Swift", cat: "Meredith"')
-//console.log(cats_and_owners)
+cats_and_owners.push({name: "Taylor Swift", cat: "Meredith"})
+console.log(cats_and_owners)
 
 // TODO write a loop to print each cat owner, and their cat's name, one per line. Use the forEach style.
 //   Each line should have a message like "Snoop Dogg's cat is called Miles Davis"
-let catsOwnerLength = []
-catsOwnerLength.forEach( function (catsName){
-    let length = catsName.length
-    catsOwnerLength.push(length)
-})
-console.log(catsOwnerLength)
+
+cats_and_owners.forEach((catDetails) => console.log(`${catDetails.name}'s cat is called ${catDetails.cat}`));
+
 
 /* d. Use the following JSON object, describing the Nobel Prize winners in 2017.
 Source http://api.nobelprize.org/v1/prize.json?year=2017
@@ -240,7 +235,7 @@ for (let i=0; i< nobel_prize_winners_2017.prizes.length; i++ ) {
 console.log(nobel_prize_winners_2017.prizes[i].category);
 }
 // TODO write code to print the total number of prize categories
-console.log(nobel_prize_winners_2017.prizes.length);
+console.log('There are ' + nobel_prize_winners_2017.prizes.length + ' prizes categories');
 
 // TODO write code to count the total number of laureates from 2017.
 //   have a good look at how the JSON is structured, and think about what loop(s) you'll need to write.
@@ -248,5 +243,5 @@ let laureateTotal = 0;
 for (let i=0; i< nobel_prize_winners_2017.prizes.length; i++ ) {
     laureateTotal += nobel_prize_winners_2017.prizes[i].laureates.length;
 }
-console.log(laureateTotal);
+console.log('The total number of laureates from 2017 is ' + laureateTotal);
 
